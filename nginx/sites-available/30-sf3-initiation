@@ -1,7 +1,7 @@
 server {
    listen 80;
 
-   root /var/www/yoopies/web;
+   root /var/www/sf3-initiation/web;
    index app_dev.php;
 
    server_name

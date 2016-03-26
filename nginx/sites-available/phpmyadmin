@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name pma.yoopies.loc;
+    server_name pma.iim.loc;
 
     root /var/www/phpmyadmin;
     index index.php

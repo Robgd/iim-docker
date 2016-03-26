@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-chown -R docker:docker /opt/yoopies
+chown -R docker:docker /opt/iim
 
 mkdir /tmp/sandbox
 mkdir /tmp/mangopay

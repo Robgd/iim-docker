@@ -17,7 +17,7 @@ RUN wget https://phar.phpunit.de/phpunit.phar && chmod +x phpunit.phar && mv php
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
-COPY ./conf.d/30-sf3-initiation.ini /etc/php5/cli/conf.d/30-sf3-initiation.ini
+COPY ./conf.d/30-php-robgd.ini /etc/php5/cli/conf.d/30-php-robgd.ini
 COPY ./run.sh /home/docker/run.sh
 
 RUN chown docker:docker /home/docker/run.sh \
@@ -26,7 +26,7 @@ RUN chown docker:docker /home/docker/run.sh \
 USER docker
 ENV HOME /home/docker
 
-WORKDIR /var/www/yoopies
+WORKDIR /var/www/sf3-initiation
 
 # Define default command.
 CMD ["/home/docker/run.sh"]

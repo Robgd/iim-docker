@@ -31,8 +31,8 @@ RUN sed -i "s@listen = /var/run/php5-fpm.sock@listen = 9000@" /etc/php5/fpm/pool
     && sed -i "s@user = www-data@user = docker@" /etc/php5/fpm/pool.d/www.conf \
     && sed -i "s@group = www-data@group = docker@" /etc/php5/fpm/pool.d/www.conf
 
-WORKDIR /var/www/yoopies
-COPY ./conf.d/30-yoopies.ini /etc/php5/fpm/conf.d/30-yoopies.ini
+WORKDIR /var/www/sf3-initiation
+COPY ./conf.d/30-php-robgd.ini /etc/php5/fpm/conf.d/30-php-robgd.ini
 
 COPY ./run.sh /root/run.sh
 RUN chmod 775 /root/*.sh

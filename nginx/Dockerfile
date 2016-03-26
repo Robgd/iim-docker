@@ -7,13 +7,13 @@ RUN apt-get update && apt-get install -y nginx php5-common php5-curl php5-fpm \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ./nginx.conf /etc/nginx/
-COPY ./sites-available/30-sf3-initiation /etc/nginx/sites-available/30-sf3-initiation
+COPY ./sites-available/30-iim /etc/nginx/sites-available/30-iim
 COPY ./sites-available/phpmyadmin /etc/nginx/sites-available/phpmyadmin
 
 COPY ./config.inc.php /etc/phpmyadmin/config.inc.php
 RUN mkdir -p /var/www
 RUN ln -s /usr/share/phpmyadmin /var/www/phpmyadmin
-RUN ln -s /etc/nginx/sites-available/30-sf3-initiation /etc/nginx/sites-enabled/30-sf3-initiation
+RUN ln -s /etc/nginx/sites-available/30-iim /etc/nginx/sites-enabled/30-iim
 RUN ln -s /etc/nginx/sites-available/phpmyadmin /etc/nginx/sites-enabled/phpmyadmin
 RUN rm /etc/nginx/sites-enabled/default
 

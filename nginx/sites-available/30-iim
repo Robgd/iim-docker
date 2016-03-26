@@ -37,6 +37,6 @@ server {
 
    client_max_body_size 30M;
 
-   access_log /var/log/nginx/yoopies_access.log;
-   error_log /var/log/nginx/yoopies_error.log;
+   access_log /var/log/nginx/iim_access.log;
+   error_log /var/log/nginx/iim_error.log;
 }

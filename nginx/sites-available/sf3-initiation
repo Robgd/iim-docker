@@ -1,0 +1,42 @@
+server {
+   listen 80;
+
+   root /var/www/yoopies/web;
+   index app_dev.php;
+
+   server_name
+      iim.loc
+   ;
+
+   location / {
+      try_files $uri @rewriteapp;
+   }
+
+   location @rewriteapp {
+      rewrite ^(.*)$ /app_dev.php/$1 last;
+   }
+
+   location ~ ^/(app|app_dev|app_test|config|redis|xliff)\.php(/|$) {
+      fastcgi_read_timeout 300;
+      fastcgi_pass  php-upstream;
+      include fastcgi_params;
+   }
+
+   location @static {
+      rewrite ^ https://static.yoopies.com$request_uri?;
+   }
+
+   # Redirect to static if the image is not present locally
+   location ~ ^/media/cache {
+      try_files $uri @static;
+   }
+
+   location ~ /\.ht {
+      deny all;
+   }
+
+   client_max_body_size 30M;
+
+   access_log /var/log/nginx/yoopies_access.log;
+   error_log /var/log/nginx/yoopies_error.log;
+}

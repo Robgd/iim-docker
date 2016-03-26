@@ -1,0 +1,52 @@
+alias l='ls -ACFl'
+alias lh='ls -ACFlh'
+
+# Development
+alias salt='php -r "echo sha1(uniqid(mt_rand(), true));" | pbcopy'
+alias password='php ~/password.php | pbcopy';
+
+# PHP
+alias cu='composer update --prefer-dist -o'
+alias ci='composer install --prefer-dist -o'
+alias phps='php -S localhost:8080'
+
+# Symfony2
+alias cc='rm -rf app/cache/* app/logs/*'
+alias dump='php app/console assets:install --symlink && php app/console assetic:dump'
+
+# Symfony3
+alias cc3='rm -rf var/cache/* var/logs/*'
+
+# Git
+alias gc='git checkout'
+alias gsp='git stash pop'
+alias gs='git stash'
+alias gpr='git pull --rebase'
+alias gpp='git pull --rebase && git push'
+gcom() { git commit -am "$*"; }
+
+# Docker
+alias docker-rm-all='docker rm $(docker ps -a -q)'
+alias docker-stop-all='docker stop $(docker ps -a -q)'
+alias docker-link-shell='eval "$(docker-machine env dev)"'
+dockerbash() { docker exec -it "$*" zsh; }
+alias locmanager='docker exec -it yoopiesdocker_manager_1 sudo su docker'
+alias docker-rmi-all='docker rmi $(docker images -q)'
+
+# www
+alias lmc='cd ~/www/LMC'
+
+# Yoopies
+alias fixer='php php-cs-fixer.phar fix src/ --level=all && git commit -am "cs fix"'
+alias gen='php app/console doctrine:generate:entities --no-backup'
+alias yoopies='cd ~/www/yoopies'
+alias resetetl='php app/console yoopies:etl --type=pet_sitter --reset-index && php app/console yoopies:etl --type=housekeeper --reset && php app/console yoopies:etl --type=carer --reset && php app/console yoopies:etl --type=house --reset && php app/console yoopies:etl --type=senior --reset && php app/console yoopies:etl --type=pet_owner --reset && php app/console yoopies:etl --type=student --reset && php app/console yoopies:etl --type=teacher --reset && php app/console yoopies:etl --type=parents --reset && php app/console yoopies:etl --type=sitter --reset'
+alias schema='php app/console doctrine:schema:update --force --dump-sql'
+alias dump='php app/console assetic:dump'
+alias fix='git commit -am "fix"'
+alias fixpsr='git commit -am "PSR Rules fix"'
+alias populate='php app/console fos:elastica:populate'
+alias backup-translation='sh ~/scripts/yoopies-import-translations'
+alias reload-php-fpm='sh ~/scripts/reload-php-fpm.sh'
+alias xdebug-enable='docker exec -it "yoopies_php" php5enmod xdebug && docker exec -it "yoopies_manager" sudo php5enmod xdebug && docker exec -it "yoopies_php" service php5-fpm restart'
+alias xdebug-disable='docker exec -it "yoopies_php" php5dismod xdebug && docker exec -it "yoopies_manager" sudo php5dismod xdebug && docker exec -it "yoopies_php" service php5-fpm restart'
